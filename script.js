@@ -51,8 +51,15 @@ for(var i = 0; i < operator.length; i++){
        else{ // calculation 
            var output = getOutput();
            var history = getHistory();
-           if(output!=""){
-               output = reverseNumberFormat(output);
+           if(output=="" && history !=""){ //if  we want change operator last moment in display 
+               if(isNaN(history[history.length-1])){
+                   history = history.substr(0, history.length-1);
+               }
+           }
+           if(output!="" || history!=""){
+               //condition?true:false
+               output = output ==""?
+               output: reverseNumberFormat(output);
                history = history + output; //display history
                if(this.id=="="){
                    var result = eval(history);
